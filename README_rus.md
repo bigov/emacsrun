@@ -22,18 +22,15 @@
  программа, указанная в первой строке файла "emacsrun.exe.ini".
 
  Содержимое текстового файла "emacsrun.exe.ini"(считывается первая строка):
- ------------------------------------------------------------------------
- runemacs.exe -g 120x60
- ------------------------------------------------------------------------
-
-
-	Компилируется:
+     runemacs.exe -g 120x60
+ 
+Компилируется:
 
   c++ emacsrun.cpp --static -std=c++17 -mwindows -Wl,-subsystem,windows\
-  	-o emacsrun.exe
+    -o emacsrun.exe
 
-	Если в системе присутствует MinGW, то можно ключ "--static" опустить:
+Если в системе присутствует MinGW, то можно ключ "--static" опустить:
 
-	c++ emacsrun.cpp -std=c++17 -mwindows -Wl,-subsystem,windows\
-  	-o emacsrun.exe
+  c++ emacsrun.cpp -std=c++17 -mwindows -Wl,-subsystem,windows\
+    -o emacsrun.exe
 
