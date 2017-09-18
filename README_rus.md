@@ -34,6 +34,6 @@
     c++ emacsrun.cpp -std=c++17 -mwindows -Wl,-subsystem,windows -o emacsrun.exe
 ---
 
-##Загрузка
+# Загрузка
 
-[Бинарные файлы](https://github.com/bigov/emacsrun/releases)
+[Бинарные файлы для Ms-Windows](https://github.com/bigov/emacsrun/releases)
