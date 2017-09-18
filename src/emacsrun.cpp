@@ -6,9 +6,36 @@
 //
 //-----------------------------------------------------------------------------
 
-#include <windows.h>
 #include <iostream>
 #include <fstream>
+/*
+#include <windows.h>
+
+int system-mswin( const std::string& cmd ){
+
+  STARTUPINFO si;
+  SecureZeroMemory(&si, sizeof(STARTUPINFO));
+	si.cb = sizeof(si);
+
+  PROCESS_INFORMATION pi;
+	ZeroMemory(&pi, sizeof(pi));
+
+  if (!CreateProcess(
+		NULL,                          // the path
+		const_cast<char*>(cmd.data()), // exec command
+		NULL,                          // Process handle not inheritable
+		NULL,                          // Thread handle not inheritable
+		FALSE,                         // Set handle inheritance to FALSE
+    CREATE_UNICODE_ENVIRONMENT,    // creation flags
+		NULL,                          // Use parent's environment block
+		NULL,                          // Use parent's starting directory
+		&si,                           // Pointer to STARTUPINFO structure
+		&pi                            // Pointer to PROCESS_INFORMATION structure
+	)) return 0;
+	
+	return 1;
+}
+*/
 
 int main(int argc, char* argv[])
 {
@@ -33,12 +60,10 @@ int main(int argc, char* argv[])
     cmd += argv[i];
   }
 
-  PROCESS_INFORMATION pi;
-  STARTUPINFO si;
-  SecureZeroMemory(&si, sizeof(STARTUPINFO));
-
-  if (!CreateProcess( NULL, const_cast<char*>(cmd.data()), NULL, NULL, FALSE,
-    CREATE_UNICODE_ENVIRONMENT, NULL, NULL, &si, &pi )) return EXIT_FAILURE;
+	cmd += " &";
+	std::system(cmd.data());
+	//system_posix(cmd);
 	
   return EXIT_SUCCESS;
 }
+
