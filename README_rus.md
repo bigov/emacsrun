@@ -32,5 +32,8 @@
 Если в системе присутствует MinGW, то можно ключ "--static" опустить:
 
     c++ emacsrun.cpp -std=c++17 -mwindows -Wl,-subsystem,windows -o emacsrun.exe
+---
 
-#[Страница загрузки](https://github.com/bigov/emacsrun/releases)
+##Загрузка
+
+[Бинарные файлы](https://github.com/bigov/emacsrun/releases)
