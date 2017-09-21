@@ -5,6 +5,9 @@
 // compiling with MinGW-w64:
 // c++ emacsrun.cpp --static -std=c++17 -mwindows -Wl,-subsystem,windows -o emacsrun.exe
 //
+// compiling on Linux
+// c++ emacsrun.cpp --static -std=c++17 -no-pie -o emacsrun
+//
 //
 //-----------------------------------------------------------------------------
 
@@ -20,6 +23,7 @@
 #define SYSTEM system_linux
 #endif
 
+#ifdef _WIN32_WINNT
 //## Message from MS-Windows
 //
 void err_mswin(const char *msg)
@@ -27,7 +31,7 @@ void err_mswin(const char *msg)
   MessageBox (NULL, msg, "Error", MB_ICONSTOP);
   return;
 }
-
+#endif
 //## Message from Linux
 //
 void err_linux(const char *msg)
@@ -43,6 +47,8 @@ int system_linux(const std::string& cmd)
   std::string app = cmd + " &";
   return std::system(app.data());
 }
+
+#ifdef _WIN32_WINNT
 
 //## Exec subprocess on MS-Windows system
 //
@@ -75,6 +81,7 @@ int system_mswin(const std::string& cmd)
   }
   return 1;
 }
+#endif
 
 //## Main here
 //
